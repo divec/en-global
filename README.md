@@ -11,13 +11,7 @@ Also supported are different spelling rules. Color or colour? Tire or tyre? Enro
 
 Some users may feel that choosing en-global is a personal statement. Perhaps they may want to project their ideas across the globe, so that all people can share them. en-global is designed to facilitate this.
 
-<div class="example">
-<u>colokr</u>
-color
-<u>cvolour</u>
-colour
-<u>colur</u>
-</div>
+<div><span style="border-bottom: dotted #f00 2px">colokr</span> color <span style="border-bottom: dotted #f00 2px">cvolour</span> colour <span style="border-bottom: dotted #f00 2px">colur</span></div>
 
 en-global achieves a high level of mistake detection: the vast majority of possible spelling mistakes are not valid proper names or regional spelling variants.
 
