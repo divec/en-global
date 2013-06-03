@@ -18,13 +18,21 @@ def writeDic(name, words):
     shutil.copy(dic, os.path.join(oxtDir, "dictionaries", dic))
 
 # Read source files
-gb = set(open("gb.txt").read().strip().decode('UTF-8').split("\n"))
-us = set(open("us.txt").read().strip().decode('UTF-8').split("\n"))
+sets = []
+used = []
+for code in "au ca gb ie us za".split():
+    filename = code + ".txt"
+    if not os.path.exists(filename): continue
+    used.append(filename)
+    with open(filename) as txt:
+        sets.append(set(txt.read().strip().decode('UTF-8').split("\n")))
 
-enGlobal = gb.union(us)
+enGlobal = set()
+enGlobal.update(*sets)
 writeDic("en-x-global", sorted(enGlobal))
 
 os.chdir("oxt-en-x-global")
 if os.path.exists("../ooo_global_english_dict.oxt"):
     os.unlink("../ooo_global_english_dict.oxt")
 subprocess.check_call(["zip", "-r", "../ooo_global_english_dict.oxt", "META-INF/manifest.xml", "dictionaries.xcu", "license.txt", "description.xml", "dictionaries/en-x-global.aff", "dictionaries/en-x-global.dic"])
+print "Used %r" % used
